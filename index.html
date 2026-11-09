@@ -1,0 +1,297 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Mouhamadou Mourtada Fall — Portfolio</title>
+<meta name="description" content="Portfolio de Mouhamadou Mourtada Fall — Administration systèmes & sécurité, Active Directory, durcissement.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Sora:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+  /* Layout: single reading column (~960px), sticky top bar, hero + stacked sections. */
+  :root{
+    --bg:#f6f8fa; --surface:#ffffff; --surface-2:#f1f4f8;
+    --fg:#0f1720; --muted:#56646f; --border:#e4e8ee;
+    --accent:#0c7489; --accent-ink:#095a6b; --accent-soft:rgba(12,116,137,.10);
+    --good:#15803d; --good-soft:rgba(21,128,61,.10);
+    --font-display:'Sora',system-ui,-apple-system,Segoe UI,sans-serif;
+    --font-body:'IBM Plex Sans',system-ui,-apple-system,Segoe UI,sans-serif;
+    --font-mono:'IBM Plex Mono',ui-monospace,SFMono-Regular,Menlo,monospace;
+    --maxw:960px;
+    color-scheme:light;
+  }
+  @media (prefers-color-scheme:dark){:root{
+    --bg:#0a0e13; --surface:#111822; --surface-2:#0e141d;
+    --fg:#e8edf3; --muted:#93a1b0; --border:#1f2a36;
+    --accent:#35c0cf; --accent-ink:#8fe3ec; --accent-soft:rgba(53,192,207,.14);
+    --good:#4ade80; --good-soft:rgba(74,222,128,.12);
+    color-scheme:dark;
+  }}
+
+  *{box-sizing:border-box}
+  html,body{margin:0}
+  img{max-width:100%}
+  [hidden]{display:none!important}
+  body{background:var(--bg);color:var(--fg);font-family:var(--font-body);line-height:1.6;font-size:15px;-webkit-font-smoothing:antialiased}
+  h1,h2,h3{font-family:var(--font-display);text-wrap:balance;line-height:1.15;margin:0}
+  p{margin:0}
+  a{color:inherit}
+
+  .wrap{max-width:var(--maxw);margin:0 auto;
+    padding-left:max(20px,env(safe-area-inset-left,0px));
+    padding-right:max(20px,env(safe-area-inset-right,0px));}
+
+  header{position:sticky;top:0;z-index:20;background:color-mix(in srgb,var(--surface) 88%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--border)}
+  .bar{display:flex;align-items:center;justify-content:space-between;gap:16px;padding-block:12px}
+  .mark{font-family:var(--font-mono);font-weight:500;font-size:13px;letter-spacing:.02em;display:flex;align-items:center;gap:8px}
+  .mark .dot{width:8px;height:8px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 3px var(--accent-soft)}
+  nav{display:flex;gap:4px;flex-wrap:wrap}
+  nav a{font-family:var(--font-mono);font-size:12.5px;color:var(--muted);text-decoration:none;padding:6px 10px;border-radius:7px}
+  nav a:hover{color:var(--fg);background:var(--surface-2)}
+  @media(max-width:560px){nav{display:none}}
+
+  .hero{padding-block:54px 40px}
+  .eyebrow{font-family:var(--font-mono);font-size:12.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--accent-ink);margin-bottom:14px}
+  .hero h1{font-size:clamp(2.2rem,7vw,3.4rem);font-weight:700;letter-spacing:-.02em}
+  .hero .role{font-family:var(--font-display);font-weight:600;font-size:clamp(1.05rem,3.5vw,1.35rem);color:var(--muted);margin-top:6px}
+  .lede{margin-top:20px;max-width:60ch;color:var(--fg)}
+  .avail{display:inline-flex;align-items:center;gap:9px;margin-top:24px;padding:8px 14px;border-radius:999px;background:var(--good-soft);color:var(--good);font-family:var(--font-mono);font-size:12.5px;font-weight:500;border:1px solid color-mix(in srgb,var(--good) 30%,transparent)}
+  .avail .pulse{width:8px;height:8px;border-radius:50%;background:var(--good);animation:pulse 2.4s ease-in-out infinite}
+  @keyframes pulse{0%,100%{opacity:1}50%{opacity:.35}}
+  @media(prefers-reduced-motion:reduce){.avail .pulse{animation:none}}
+
+  .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:38px}
+  @media(max-width:620px){.stats{grid-template-columns:repeat(2,1fr)}}
+  .stat{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:16px}
+  .stat .n{font-family:var(--font-display);font-weight:700;font-size:1.5rem;font-variant-numeric:tabular-nums;letter-spacing:-.01em}
+  .stat .l{font-family:var(--font-mono);font-size:11.5px;color:var(--muted);margin-top:4px;letter-spacing:.02em}
+
+  section{padding-block:40px;border-top:1px solid var(--border)}
+  .sec-head{display:flex;align-items:baseline;gap:12px;margin-bottom:26px}
+  .sec-head .no{font-family:var(--font-mono);font-size:12px;color:var(--accent-ink)}
+  .sec-head h2{font-size:1.5rem;font-weight:600;letter-spacing:-.01em}
+
+  .projects{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+  @media(max-width:680px){.projects{grid-template-columns:1fr}}
+  .card{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:22px;display:flex;flex-direction:column;gap:12px;min-width:0}
+  .card .top{display:flex;align-items:center;justify-content:space-between;gap:10px}
+  .card h3{font-size:1.12rem;font-weight:600}
+  .card .kind{font-family:var(--font-mono);font-size:11px;letter-spacing:.04em;text-transform:uppercase;color:var(--accent-ink);background:var(--accent-soft);padding:4px 9px;border-radius:6px;white-space:nowrap}
+  .card p{color:var(--muted);font-size:14px}
+  .tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:2px}
+  .tag{font-family:var(--font-mono);font-size:11px;color:var(--fg);background:var(--surface-2);border:1px solid var(--border);padding:3px 8px;border-radius:6px}
+
+  .exp{display:flex;flex-direction:column;gap:8px}
+  .exp .role-l{display:flex;align-items:baseline;justify-content:space-between;gap:12px;flex-wrap:wrap}
+  .exp h3{font-size:1.1rem;font-weight:600}
+  .exp .when{font-family:var(--font-mono);font-size:12px;color:var(--muted);white-space:nowrap}
+  .exp .org{color:var(--accent-ink);font-weight:500;font-size:14px}
+  ul.clean{margin:10px 0 0;padding-left:18px;color:var(--muted);font-size:14px;display:flex;flex-direction:column;gap:5px}
+  ul.clean li::marker{color:var(--accent)}
+  .other{margin-top:22px;padding-top:18px;border-top:1px dashed var(--border);color:var(--muted);font-size:13.5px}
+  .other b{color:var(--fg);font-weight:600}
+
+  .skills{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+  @media(max-width:680px){.skills{grid-template-columns:1fr}}
+  .skillgrp{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:18px}
+  .skillgrp h3{font-family:var(--font-mono);font-size:12px;font-weight:500;letter-spacing:.04em;text-transform:uppercase;color:var(--muted);margin-bottom:12px}
+  .chips{display:flex;flex-wrap:wrap;gap:7px}
+  .chip{font-size:13px;padding:5px 11px;border-radius:7px;background:var(--surface-2);border:1px solid var(--border)}
+
+  .two{display:grid;grid-template-columns:1.2fr 1fr;gap:28px}
+  @media(max-width:680px){.two{grid-template-columns:1fr}}
+  .certlist{display:flex;flex-direction:column;gap:2px}
+  .cert{display:flex;gap:12px;padding:11px 0;border-bottom:1px solid var(--border)}
+  .cert:last-child{border-bottom:0}
+  .cert .issuer{font-family:var(--font-mono);font-size:11px;color:var(--accent-ink);flex:0 0 92px;padding-top:2px}
+  .cert .name{font-size:14px}
+  .forma{display:flex;flex-direction:column;gap:16px}
+  .forma .item h3{font-size:1rem;font-weight:600}
+  .forma .item .sub{font-family:var(--font-mono);font-size:12px;color:var(--muted);margin-top:3px}
+  .forma .item p{color:var(--muted);font-size:13.5px;margin-top:6px}
+  .langs{display:flex;gap:10px;flex-wrap:wrap;margin-top:4px}
+  .lang{font-family:var(--font-mono);font-size:12.5px;padding:6px 12px;border-radius:8px;border:1px solid var(--border);background:var(--surface)}
+
+  .contact{padding-block:44px 60px;border-top:1px solid var(--border)}
+  .contact h2{font-size:1.6rem;font-weight:600;margin-bottom:18px}
+  .cta{display:flex;flex-wrap:wrap;gap:12px;align-items:center}
+  .field{display:flex;align-items:center;gap:10px;background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:10px 14px;font-family:var(--font-mono);font-size:13px;min-width:0}
+  .field .k{color:var(--muted)}
+  .field .v{color:var(--fg);overflow:hidden;text-overflow:ellipsis}
+  .field a{color:var(--accent-ink);text-decoration:none}
+  .field a:hover{text-decoration:underline}
+  .copy{cursor:pointer;border:1px solid var(--border);background:var(--surface-2);color:var(--muted);border-radius:6px;font-family:var(--font-mono);font-size:11px;padding:3px 8px}
+  .copy:hover{color:var(--fg)}
+  .copy:focus-visible,nav a:focus-visible,.field a:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+  footer{color:var(--muted);font-family:var(--font-mono);font-size:11.5px;padding-block:22px 40px;border-top:1px solid var(--border);text-align:center}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap bar">
+    <div class="mark"><span class="dot"></span>M. MOURTADA FALL</div>
+    <nav>
+      <a href="#projets">Projets</a>
+      <a href="#experience">Expérience</a>
+      <a href="#competences">Compétences</a>
+      <a href="#certifs">Certifications</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<div class="wrap">
+
+  <section class="hero" style="border-top:0">
+    <div class="eyebrow">Administrateur Systèmes &amp; Sécurité</div>
+    <h1>Mouhamadou Mourtada Fall</h1>
+    <div class="role">Infrastructure Windows &amp; Linux · Active Directory · Durcissement</div>
+    <p class="lede">Étudiant en informatique à l'IPSSI, orienté administration systèmes et sécurité. J'ai durci des serveurs en production, monté un lab Active Directory de zéro et développé mes propres outils de sécurité. Je vise une alternance où je peux gérer une vraie infra et continuer à monter en compétence côté offensif.</p>
+    <div class="avail"><span class="pulse"></span>En recherche d'alternance — Admin Systèmes &amp; Sécurité · 3 sem. entreprise / 1 sem. formation</div>
+
+    <div class="stats">
+      <div class="stat"><div class="n">2025</div><div class="l">LAB AD · WINDOWS SERVER</div></div>
+      <div class="stat"><div class="n">~20</div><div class="l">MACHINES ROOTÉES</div></div>
+      <div class="stat"><div class="n">6</div><div class="l">CERTIFICATIONS</div></div>
+      <div class="stat"><div class="n">3</div><div class="l">LANGUES</div></div>
+    </div>
+  </section>
+
+  <section id="projets">
+    <div class="sec-head"><span class="no">01</span><h2>Projets</h2></div>
+    <div class="projects">
+
+      <div class="card">
+        <div class="top"><h3>Vigilo</h3><span class="kind">Outil · Sécurité</span></div>
+        <p>Outil d'analyse de logs de sécurité que j'ai conçu, développé et livré. Déployé sur un serveur de production en entreprise et validé par celle-ci. Packagé en exécutable autonome pour Windows et Linux.</p>
+        <div class="tags"><span class="tag">Python</span><span class="tag">PyInstaller</span><span class="tag">Windows</span><span class="tag">Linux</span><span class="tag">Log analysis</span></div>
+      </div>
+
+      <div class="card">
+        <div class="top"><h3>Antivol</h3><span class="kind">Outil · Détection</span></div>
+        <p>Détecteur d'intrusion PC : un piège se déclenche à l'écran de verrouillage et capture des preuves si quelqu'un d'autre utilise la machine. Journal de preuves infalsifiable (chaîné par hash), conçu pour résister à un attaquant averti.</p>
+        <div class="tags"><span class="tag">Python</span><span class="tag">Windows</span><span class="tag">Tâches planifiées</span><span class="tag">Tamper-evident</span></div>
+      </div>
+
+      <div class="card">
+        <div class="top"><h3>Lab Active Directory</h3><span class="kind">Homelab · Admin</span></div>
+        <p>Forêt <span style="font-family:var(--font-mono);font-size:.92em">formation.lab</span> montée de zéro sur Windows Server 2025 (VMware). Démarche build → break → fix : durcissement (tiering, LAPS, gMSA, Protected Users, délégation) puis attaques (Kerberoasting, AS-REP, DCSync, Golden/Silver ticket) analysées avec BloodHound et PingCastle.</p>
+        <div class="tags"><span class="tag">Windows Server 2025</span><span class="tag">Active Directory</span><span class="tag">GPO</span><span class="tag">BloodHound</span><span class="tag">PingCastle</span></div>
+      </div>
+
+      <div class="card">
+        <div class="top"><h3>Pratique offensive</h3><span class="kind">Labs · Pentest</span></div>
+        <p>Une vingtaine de machines compromises sur TryHackMe et VulnHub (Linux et Windows), plus une filière d'élévation de privilèges Windows travaillée en autonomie sur VM : services, tâches planifiées, registre. Prise de notes et refaire chaque box en solo pour ancrer.</p>
+        <div class="tags"><span class="tag">TryHackMe</span><span class="tag">VulnHub</span><span class="tag">Privesc</span><span class="tag">Metasploit</span><span class="tag">Linux / Windows</span></div>
+      </div>
+
+    </div>
+  </section>
+
+  <section id="experience">
+    <div class="sec-head"><span class="no">02</span><h2>Expérience</h2></div>
+    <div class="exp">
+      <div class="role-l">
+        <div>
+          <h3>Pentesteur Junior <span class="org">· STS</span></h3>
+        </div>
+        <span class="when">Août – Sept. 2026 · Vado Ligure (IT)</span>
+      </div>
+      <ul class="clean">
+        <li>Tests d'intrusion web, en manuel et avec des outils dédiés, sur les sites et le réseau de l'entreprise</li>
+        <li>Déploiement et durcissement d'un serveur web complet : <b style="color:var(--fg)">Nginx</b> en reverse proxy, WAF <b style="color:var(--fg)">ModSecurity</b>, <b style="color:var(--fg)">Fail2ban</b> et filtrage <b style="color:var(--fg)">GeoIP</b></li>
+        <li>Hébergement de plusieurs sites derrière le reverse proxy</li>
+        <li>Automatisation de l'émission des certificats SSL/TLS via un script Python, pour gérer un grand nombre de sites</li>
+      </ul>
+      <div class="other">
+        <b>Autres expériences</b> — magasinier (Conad Nord Ovest), stagiaire soudure (Infineum Italia), apprenti couvreur, aide-cuisinier. Travail en équipe, rigueur et respect des normes de sécurité.
+      </div>
+    </div>
+  </section>
+
+  <section id="competences">
+    <div class="sec-head"><span class="no">03</span><h2>Compétences</h2></div>
+    <div class="skills">
+      <div class="skillgrp">
+        <h3>Systèmes &amp; Virtualisation</h3>
+        <div class="chips"><span class="chip">Windows Server 2025</span><span class="chip">Active Directory</span><span class="chip">Linux (serveurs)</span><span class="chip">Proxmox</span><span class="chip">VMware / ESXi</span></div>
+      </div>
+      <div class="skillgrp">
+        <h3>Réseau</h3>
+        <div class="chips"><span class="chip">CCNA 1</span><span class="chip">CCNA 2</span><span class="chip">Nginx / Reverse proxy</span><span class="chip">DNS</span><span class="chip">GPO</span></div>
+      </div>
+      <div class="skillgrp">
+        <h3>Sécurité</h3>
+        <div class="chips"><span class="chip">Durcissement (hardening)</span><span class="chip">ModSecurity (WAF)</span><span class="chip">Fail2ban / GeoIP</span><span class="chip">Hardening AD</span><span class="chip">Analyse de logs</span><span class="chip">Pentest web</span><span class="chip">Cryptographie</span></div>
+      </div>
+      <div class="skillgrp">
+        <h3>Développement &amp; Scripting</h3>
+        <div class="chips"><span class="chip">Python</span><span class="chip">Bash</span><span class="chip">JavaScript</span><span class="chip">HTML / CSS</span><span class="chip">PHP</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="certifs">
+    <div class="sec-head"><span class="no">04</span><h2>Certifications &amp; Formation</h2></div>
+    <div class="two">
+      <div>
+        <div class="certlist">
+          <div class="cert"><div class="issuer">CISCO</div><div class="name">Introduction to Cybersecurity</div></div>
+          <div class="cert"><div class="issuer">CISCO</div><div class="name">Linux Unhatched</div></div>
+          <div class="cert"><div class="issuer">ANSSI</div><div class="name">SecNumacadémie — Sensibilisation à la cybersécurité</div></div>
+          <div class="cert"><div class="issuer">CNIL</div><div class="name">Atelier RGPD — protection des données</div></div>
+          <div class="cert"><div class="issuer">PYTHON</div><div class="name">Acquisition, préparation &amp; analyse exploratoire des données (EDA)</div></div>
+          <div class="cert"><div class="issuer">IPSSI</div><div class="name">Modules fondamentaux 1 à 6</div></div>
+        </div>
+      </div>
+      <div class="forma">
+        <div class="item">
+          <h3>Bachelor Informatique</h3>
+          <div class="sub">IPSSI · depuis 2024</div>
+          <p>Développement fullstack, systèmes, réseaux et cloud, sécurité des systèmes d'information. 3ᵉ année en spécialisation.</p>
+        </div>
+        <div class="item">
+          <h3>Baccalauréat — Enseignement général</h3>
+          <div class="sub">Lycée d'Excellence Léon Gontran Damas</div>
+        </div>
+        <div class="item">
+          <h3>Langues</h3>
+          <div class="langs"><span class="lang">Français · courant</span><span class="lang">Italien · courant</span><span class="lang">Anglais · pro.</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="contact" id="contact" style="border-top:1px solid var(--border)">
+    <h2>Me contacter</h2>
+    <div class="cta">
+      <div class="field"><span class="k">email</span><span class="v" id="email">mouhamadoumourtadafall612@gmail.com</span><button class="copy" id="copyBtn" type="button">copier</button></div>
+      <div class="field"><span class="k">github</span><a href="https://github.com/Mourtada10" target="_blank" rel="noopener">github.com/Mourtada10</a></div>
+      <div class="field"><span class="k">basé à</span><span class="v">Savona, Italie</span></div>
+    </div>
+  </section>
+
+  <footer>Mouhamadou Mourtada Fall · Portfolio · 2026</footer>
+</div>
+
+<script>
+  (function(){
+    var btn=document.getElementById('copyBtn');
+    var email=document.getElementById('email');
+    if(!btn||!email)return;
+    btn.addEventListener('click',function(){
+      var txt=email.textContent.trim();
+      function done(){var o=btn.textContent;btn.textContent='copié ✓';setTimeout(function(){btn.textContent=o;},1600);}
+      function fallback(){
+        try{var r=document.createRange();r.selectNodeContents(email);var s=window.getSelection();s.removeAllRanges();s.addRange(r);done();}catch(e){}
+      }
+      if(navigator.clipboard&&navigator.clipboard.writeText){
+        navigator.clipboard.writeText(txt).then(done).catch(fallback);
+      }else{fallback();}
+    });
+  })();
+</script>
+</body>
+</html>
